@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 
-class EmployeeViewModel:ViewModel() {
+class NoteViewModel:ViewModel() {
     private val repo = MyApplication.getApp().repo
     private val _listState = MutableLiveData<ListState>(ListState.EmptyList)
     val listState:LiveData<ListState> = _listState
-    private val observer = Observer<List<Employee>> {
+    private val observer = Observer<List<Note>> {
         _listState.postValue(ListState.UpdateList(list = it))
     }
 
@@ -17,12 +17,12 @@ class EmployeeViewModel:ViewModel() {
         repo.getAll().observeForever(observer)
     }
 
-    fun add(name:String, position:String){
-        repo.add(Employee(name = name, position = position))
+    fun add(note:String){
+        repo.add(Note(note = note))
     }
 
-    fun remove(employee: Employee) {
-        repo.removeEmployee(employee)
+    fun remove(note: Note) {
+        repo.removeEmployee(note)
     }
 
     override fun onCleared() {
@@ -33,6 +33,6 @@ class EmployeeViewModel:ViewModel() {
 
     sealed class ListState {
         object EmptyList:ListState()
-        class UpdateList(val list:List<Employee>):ListState()
+        class UpdateList(val list:List<Note>):ListState()
     }
 }

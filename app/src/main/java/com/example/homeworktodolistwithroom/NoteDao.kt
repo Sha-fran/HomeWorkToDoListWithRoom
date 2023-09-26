@@ -7,13 +7,13 @@ import androidx.room.Insert
 import androidx.room.Query
 
 @Dao
-interface EmployeeDao {
+interface NoteDao {
     @Insert
-    fun add(employee: Employee)
+    fun add(note: Note)
 
     @Delete
-    fun delete(employee: Employee)
+    fun delete(note: Note)
 
-    @Query("SELECT * FROM employee")
-    fun getAll():LiveData<List<Employee>>
+    @Query("SELECT * FROM notes")
+    fun getAll():LiveData<List<Note>>
 }

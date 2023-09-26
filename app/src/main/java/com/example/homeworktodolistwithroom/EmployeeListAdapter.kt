@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class EmployeeListAdapter(var items:List<Employee> = emptyList()): RecyclerView.Adapter<EmployeeViewHolder>() {
+class EmployeeListAdapter(var items:List<Note> = emptyList()): RecyclerView.Adapter<EmployeeViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeeViewHolder {
         val listItemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
 
@@ -16,17 +16,15 @@ class EmployeeListAdapter(var items:List<Employee> = emptyList()): RecyclerView.
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: EmployeeViewHolder, position: Int) {
-        holder.name.text = items[position].name
-        holder.position.text = items[position].position
+        holder.note.text = items[position].note
     }
 
-    fun updateItems(itemsToUpdte:List<Employee>) {
+    fun updateItems(itemsToUpdte:List<Note>) {
         items = itemsToUpdte
         notifyDataSetChanged()
     }
 }
 
 class EmployeeViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-    val name:TextView = itemView.findViewById(R.id.add_name)
-    val position:TextView = itemView.findViewById(R.id.add_position)
+    val note:TextView = itemView.findViewById(R.id.add_note)
 }

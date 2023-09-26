@@ -4,16 +4,16 @@ import android.app.Application
 import androidx.room.Room
 
 class MyApplication:Application() {
-    lateinit var repo:EmployeeRepository
+    lateinit var repo:NoteRepository
 
     override fun onCreate() {
         super.onCreate()
 
         instance = this
-        val db = Room.databaseBuilder(context = this, klass = EmployeeDatabase::class.java,
-            name = "employee_database").build()
+        val db = Room.databaseBuilder(context = this, klass = NoteDatabase::class.java,
+            name = "note_database").build()
 
-        repo = EmployeeRepository(db)
+        repo = NoteRepository(db)
     }
 
     companion object {
