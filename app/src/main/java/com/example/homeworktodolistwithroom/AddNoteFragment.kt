@@ -9,7 +9,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 
-class AddEmployeeFragment:Fragment() {
+class AddNoteFragment:Fragment() {
     private lateinit var viewmodel:NoteViewModel
     override fun onCreateView(
         inflater: LayoutInflater,

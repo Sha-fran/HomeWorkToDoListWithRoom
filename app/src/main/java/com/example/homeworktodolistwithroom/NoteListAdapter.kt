@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class EmployeeListAdapter(var items:List<Note> = emptyList()): RecyclerView.Adapter<EmployeeViewHolder>() {
+class EmployeeListAdapter(var items:MutableList<Note> = mutableListOf()): RecyclerView.Adapter<EmployeeViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeeViewHolder {
         val listItemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
 
@@ -19,10 +19,11 @@ class EmployeeListAdapter(var items:List<Note> = emptyList()): RecyclerView.Adap
         holder.note.text = items[position].note
     }
 
-    fun updateItems(itemsToUpdte:List<Note>) {
-        items = itemsToUpdte
+    fun updateItems(itemsToUpdate:MutableList<Note>) {
+        items = itemsToUpdate
         notifyDataSetChanged()
     }
+
 }
 
 class EmployeeViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {

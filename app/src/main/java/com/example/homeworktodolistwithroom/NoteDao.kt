@@ -15,5 +15,5 @@ interface NoteDao {
     fun delete(note: Note)
 
     @Query("SELECT * FROM notes")
-    fun getAll():LiveData<List<Note>>
+    fun getAll():LiveData<MutableList<Note>>
 }

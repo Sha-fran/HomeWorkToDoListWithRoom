@@ -10,7 +10,7 @@ class NoteViewModel:ViewModel() {
     private val _listState = MutableLiveData<ListState>(ListState.EmptyList)
     val listState:LiveData<ListState> = _listState
     private val observer = Observer<List<Note>> {
-        _listState.postValue(ListState.UpdateList(list = it))
+        _listState.postValue(ListState.UpdateList(list = it.toMutableList()))
     }
 
     init {
@@ -32,7 +32,7 @@ class NoteViewModel:ViewModel() {
 
 
     sealed class ListState {
-        object EmptyList:ListState()
-        class UpdateList(val list:List<Note>):ListState()
+        data object EmptyList:ListState()
+        class UpdateList(val list:MutableList<Note>):ListState()
     }
 }
