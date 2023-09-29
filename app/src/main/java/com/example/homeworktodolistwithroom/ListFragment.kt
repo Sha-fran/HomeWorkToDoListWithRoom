@@ -58,8 +58,6 @@ class ListFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 if (direction == ItemTouchHelper.END) {
                     viewModel.remove(adapter.items.get(viewHolder.adapterPosition))
-                    adapter.items.removeAt(viewHolder.adapterPosition)
-                    adapter.notifyItemRemoved(viewHolder.adapterPosition)
                 }
             }
         })
